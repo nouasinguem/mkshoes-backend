@@ -7,7 +7,13 @@ WORKDIR /app
 # Copy all project files
 COPY . .
 
-# Build the project (skip tests for faster build)
+# Make mvnw executable
+RUN chmod +x ./mvnw
+
+# Install bash/git for Maven wrapper
+RUN apk add --no-cache bash git openssh
+
+# Build the project (skip tests)
 RUN ./mvnw clean package -DskipTests
 
 # Expose the port the app will run on
