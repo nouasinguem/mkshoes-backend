@@ -16,7 +16,7 @@ public class config implements WebMvcConfigurer {
 
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOriginPatterns(List.of("*"));
+        config.setAllowedOriginPatterns(List.of("https://mkshoes.netlify.app/", "http://localhost:5176", "http://localhost:5173/", "http://localhost:5174/", "http://localhost:5175/"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
