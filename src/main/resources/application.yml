@@ -1,0 +1,16 @@
+spring:
+ config:
+  import: optional:file:.env[.properties]
+ application:
+  name: Final_Year_Project
+ datasource:
+  url: ${DB_URL}
+  username: ${DB_USERNAME}
+  password: ${DB_PASSWORD}
+ jpa:
+  properties:
+   hibernate:
+    dialect: org.hibernate.dialect.MySQLDialect
+    hbm2ddl:
+     auto: update
+

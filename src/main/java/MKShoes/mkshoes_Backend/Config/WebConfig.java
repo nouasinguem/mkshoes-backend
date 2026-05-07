@@ -1,0 +1,14 @@
+package MKShoes.mkshoes_Backend.Config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/ShoesImages/**")
+                .addResourceLocations("classpath:/static/images/", "classpath:/images/", "classpath:/images/", "classpath:/static/");
+    }
+}
