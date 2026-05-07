@@ -9,7 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {
+        "https://mkshoes.netlify.app",
+        "http://localhost:5176",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175"}
+)
 @RestController
 @RequestMapping("/auth")
 public class UserController {

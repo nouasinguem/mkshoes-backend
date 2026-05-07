@@ -10,7 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cart")
-@CrossOrigin(origins = "*", allowCredentials = "true")
+@CrossOrigin(origins = {
+        "https://mkshoes.netlify.app",
+        "http://localhost:5176",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175"},
+        allowCredentials = "true")
 public class CartController {
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(@RequestBody CartItemDto item, HttpSession session) {
