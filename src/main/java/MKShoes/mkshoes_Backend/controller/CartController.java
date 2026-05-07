@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cart")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "*", allowCredentials = "true")
 public class CartController {
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(@RequestBody CartItemDto item, HttpSession session) {
