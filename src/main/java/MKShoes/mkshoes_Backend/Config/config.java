@@ -16,10 +16,10 @@ public class config implements WebMvcConfigurer {
 
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOriginPatterns(List.of("https://mkshoes.netlify.app/", "http://localhost:5176",
-                "http://localhost:5173/", "http://localhost:5174/", "http://localhost:5175/"));
-        config.setAllowedHeaders(List.of("https://mkshoes.netlify.app/", "http://localhost:5176",
-                "http://localhost:5173/", "http://localhost:5174/", "http://localhost:5175/"));
+        config.setAllowedOriginPatterns(List.of("https://mkshoes.netlify.app", "http://localhost:5176",
+                "http://localhost:5173", "http://localhost:5174", "http://localhost:5175"));
+        config.setAllowedHeaders(List.of("https://mkshoes.netlify.app", "http://localhost:5176",
+                "http://localhost:5173", "http://localhost:5174", "http://localhost:5175"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -36,8 +36,8 @@ public class config implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://mkshoes.netlify.app/", "http://localhost:5176",
-        "http://localhost:5173/", "http://localhost:5174/", "http://localhost:5175/")
+                .allowedOrigins("https://mkshoes.netlify.app", "http://localhost:5176",
+        "http://localhost:5173", "http://localhost:5174", "http://localhost:5175")
                 .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 }
