@@ -59,11 +59,9 @@ public class OrderRequestServiceImplementationTest {
         OrderItemDto itemDto = new OrderItemDto();
         itemDto.setProductId(1);
         itemDto.setQuantity(2);
-
         OrderRequestDto request = new OrderRequestDto();
         request.setUserEmail("email@email.com");
         request.setItems(List.of(itemDto));
-
         when(userRepository.findById("email@email.com"))
                 .thenReturn(Optional.of(user));
 
@@ -76,13 +74,10 @@ public class OrderRequestServiceImplementationTest {
         orders result = orderRequestServiceImplementation.createOrder(request);
 
         assertNotNull(result);
-
         //Check the price
         assertEquals(200, result.getPrice());
         //Checking the repositories
         verify(productRepository, times(1)).save(product);
         verify(ordersRepository, times(1)).save(any(orders.class));
-
     }
-
 }

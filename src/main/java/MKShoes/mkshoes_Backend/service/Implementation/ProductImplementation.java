@@ -36,4 +36,15 @@ public class ProductImplementation implements ProductService {
                 .orElseThrow(() -> new RessourceNotFoundException("No such user"));
         return ProductMapper.MapToProductDto(product) ;
     }
+
+    @Override
+    public List<ProductDto> searchProducts(String name) {
+
+        List<products> productList =
+                productRepository.findByProductNameContainingIgnoreCase(name);
+
+        return productList.stream()
+                .map(ProductMapper::MapToProductDto)
+                .toList();
+    }
 }

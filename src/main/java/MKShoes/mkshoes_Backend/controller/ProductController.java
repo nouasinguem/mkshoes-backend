@@ -23,6 +23,13 @@ public class ProductController {
         List <ProductDto> productDtoList = productService.findAll();
         return ResponseEntity.ok(productDtoList);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDto>> searchProducts(@RequestParam String name) {
+        List<ProductDto> products = productService.searchProducts(name);
+        return ResponseEntity.ok(products);
+    }
+
     //API to get a single product
     @GetMapping("/{productId}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable int productId){

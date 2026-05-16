@@ -11,4 +11,6 @@ public interface ProductService {
     List<ProductDto> findAll();
 
     ProductDto findById(int id);
+
+    List<ProductDto> searchProducts(String name);
 }
