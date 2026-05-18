@@ -62,13 +62,10 @@ public class OrderRequestServiceImplementationTest {
         OrderRequestDto request = new OrderRequestDto();
         request.setUserEmail("email@email.com");
         request.setItems(List.of(itemDto));
-        when(userRepository.findById("email@email.com"))
-                .thenReturn(Optional.of(user));
+        when(userRepository.findById("email@email.com")).thenReturn(Optional.of(user));
 
-        when(productRepository.findById(1))
-                .thenReturn(Optional.of(product));
-        when(ordersRepository.save(any(orders.class)))
-                .thenAnswer(invocation -> invocation.getArgument(0));
+        when(productRepository.findById(1)).thenReturn(Optional.of(product));
+        when(ordersRepository.save(any(orders.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         //Attempting to place the orders
         orders result = orderRequestServiceImplementation.createOrder(request);

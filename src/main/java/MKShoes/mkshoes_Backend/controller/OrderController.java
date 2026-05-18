@@ -29,7 +29,7 @@ public class OrderController {
         return ResponseEntity.ok(orderRequestService.getOrderById(id));
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<orders> createOrder(@RequestBody OrderRequestDto request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(orderRequestService.createOrder(request));
