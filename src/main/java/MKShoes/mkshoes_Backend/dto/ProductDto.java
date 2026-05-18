@@ -17,4 +17,8 @@ public class ProductDto {
     private int productPrice;
     private float productStock;
     private String productImage;
+    private String category;
+    private String brand;
+    private String gender;
+    private String country;
 }

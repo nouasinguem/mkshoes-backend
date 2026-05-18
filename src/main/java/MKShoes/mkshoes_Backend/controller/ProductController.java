@@ -40,4 +40,11 @@ public class ProductController {
         return ResponseEntity.ok(productDto);
     }
 
+
+    @GetMapping("/filter") public ResponseEntity<List> filterProducts( @RequestParam(required = false) String brand,
+                                                                       @RequestParam(required = false) String category,
+                                                                       @RequestParam(required = false) String gender,
+                                                                       @RequestParam(required = false) String country ) {
+        return ResponseEntity.ok(productService.filterProducts(brand, category, gender, country));
+    }
 }

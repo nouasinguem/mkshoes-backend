@@ -5,7 +5,6 @@ import MKShoes.mkshoes_Backend.entity.products;
 import MKShoes.mkshoes_Backend.exception.RessourceNotFoundException;
 import MKShoes.mkshoes_Backend.mapper.ProductMapper;
 import MKShoes.mkshoes_Backend.repository.productRepository;
-import MKShoes.mkshoes_Backend.repository.userRepository;
 import MKShoes.mkshoes_Backend.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +21,14 @@ import java.util.stream.Collectors;
 public class ProductImplementation implements ProductService {
 
     private productRepository productRepository;
+
+    //Normalise entry
+    private String normalise(String s) {
+        if (s == null || s.trim().isEmpty()) {
+            return null;
+        }
+        return s.trim();
+    }
 
     @Override
     public List<ProductDto> findAll() {
@@ -44,6 +51,19 @@ public class ProductImplementation implements ProductService {
                 productRepository.findByProductNameContainingIgnoreCase(name);
 
         return productList.stream()
+                .map(ProductMapper::MapToProductDto)
+                .toList();
+    }
+
+    @Override
+    public List<ProductDto> filterProducts(String brand, String category, String gender, String country) {
+
+        brand = normalise(brand);
+        category = normalise(category);
+        gender = normalise(gender);
+        country = normalise(country);
+
+        return productRepository.filterProducts(brand, category, gender, country).stream()
                 .map(ProductMapper::MapToProductDto)
                 .toList();
     }

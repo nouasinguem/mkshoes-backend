@@ -13,4 +13,6 @@ public interface ProductService {
     ProductDto findById(int id);
 
     List<ProductDto> searchProducts(String name);
+
+    List<ProductDto> filterProducts(String brand, String category, String gender, String country);
 }
