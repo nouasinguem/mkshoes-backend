@@ -40,6 +40,10 @@ public class OrderController {
         return ResponseEntity.ok(orderRequestService.getOrderByEmail(email));
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> cancelOrder(@PathVariable int id) {
+        orderRequestService.cancelOrder(id);
+        return ResponseEntity.ok("Successful cancellation");
+    }
 
 }

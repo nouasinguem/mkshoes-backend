@@ -26,7 +26,7 @@ public class orders {
     private Users user;
 
     private float price;
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<orderItem> orderItems;

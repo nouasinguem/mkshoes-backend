@@ -19,6 +19,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,6 +44,7 @@ public class OrderRequestServiceImplementation implements OrderRequestService {
         //creating the order
         orders order = new orders();
         order.setUser(user);
+        order.setCreatedAt(LocalDateTime.now());
 
         List<orderItem> orderItems = new ArrayList<>();
         float totalPrice = 0;//Initialising the total price
@@ -101,5 +103,19 @@ public class OrderRequestServiceImplementation implements OrderRequestService {
         orders order = ordersRepository.findById(orderId)
                 .orElseThrow(() -> new RessourceNotFoundException("No such order"));//Check the existence of the order
         return OrdersMapper.MapToOrderDto(order);
+    }
+
+    @Override
+    public void cancelOrder(int orderId) {
+        orders order = ordersRepository.findById(orderId)
+                .orElseThrow(() -> new RessourceNotFoundException("Order not found"));
+
+        for (orderItem item : order.getOrderItems()) {
+            products product = item.getProduct();
+            product.setProductStock(product.getProductStock() + item.getQuantity());
+            productRepository.save(product);
+        }
+
+        ordersRepository.delete(order);
     }
 }

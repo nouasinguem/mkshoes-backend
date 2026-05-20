@@ -16,23 +16,13 @@ public class OrdersMapper {
         orderDto.setOrderId(orders.getOrderId());
         orderDto.setUser(orders.getUser()); // assuming user is an object with email
         orderDto.setPrice(orders.getPrice());
-
-        // Map the items list (orderItems)
         List<OrderItemDto> orderItemDtos = orders.getOrderItems().stream()
                 .map(OrderItemMapper::MapToOrderItemDto)
                 .collect(Collectors.toList());
         orderDto.setOrderItemsDto(orderItemDtos);
+        orderDto.setCreatedAt(orders.getCreatedAt());
 
         return orderDto;
     }
 
-//    public static orders MapToOrders (OrderDto orderDto){
-//        return new orders(
-//                orderDto.getOrderId(),
-//                orderDto.getUser(),
-//                orderDto.getPrice(),
-//                orderDto.getCreatedAt(),
-//                orderDto.getOrderItems()
-//        );
-//    }
 }

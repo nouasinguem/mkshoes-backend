@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,4 +14,8 @@ import lombok.Setter;
 public class OrderItemDto {
     private int productId;
     private int quantity;
+    private String productName;
+    private String productImage;
+    private float productPrice;
+    private int id;
 }

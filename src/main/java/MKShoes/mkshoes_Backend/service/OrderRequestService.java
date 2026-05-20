@@ -16,4 +16,5 @@ public interface OrderRequestService {
 
     OrderDto getOrderById(int orderId);
 
+    void cancelOrder(int orderId);
 }

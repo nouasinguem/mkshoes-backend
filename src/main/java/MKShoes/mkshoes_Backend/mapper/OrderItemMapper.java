@@ -7,7 +7,11 @@ public class OrderItemMapper {
     public static OrderItemDto MapToOrderItemDto (orderItem orderItem){
         return new OrderItemDto(
                 orderItem.getOrderItemId(),
-                orderItem.getQuantity()
+                orderItem.getQuantity(),
+                orderItem.getProduct().getProductName(),
+                orderItem.getProduct().getProductImage(),
+                orderItem.getProduct().getProductPrice(),
+                orderItem.getProduct().getProductId()
         );
     }
 
